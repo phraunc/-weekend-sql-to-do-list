@@ -12,7 +12,23 @@ getTask();
 //function to get the button to work and get data.
 function addTaskButton(){
 console.log('in the addTaskButton');
-getTask();
+let payloadObject = {
+    task: $('#taskInput').val(),
+    complete: $('#completeTaskInput').val(),
+    notes: $('#notesInput').val()
+  }
+  $.ajax({
+    type: 'POST',
+    url: '/taskList',
+    data: payloadObject,
+  })
+  .then(function (response){
+    $('#taskInput').val(''),
+    $('#completeTaskInput').val(''),
+    $('#notesInput').val(''),
+    getTask();
+  })
+
 
 };
 

@@ -8,7 +8,7 @@ const pool = require('../modules/pool.js');
 tasklistRouter.get('/', (req, res)=>{
     console.log('In the tasklistRouter GET, trying to get some tasks');
     const queryText = 'SELECT * FROM "TaskList"';
-    console.log('submitting Query to DB', queryText);
+    console.log('submitting Query to DB');
     
     pool.query(queryText)
     .then((result)=>{
@@ -22,7 +22,23 @@ tasklistRouter.get('/', (req, res)=>{
 
 
 //create a POST route
+tasklistRouter.post('/', (req, res) => {
+    const newTask= req.body;
+    console.log('New Task', newTask);
 
+    const queryText = `INSERT INTO "TaskList" (task, complete, notes)
+    VALUES ($1, $2, $3);`; //need to start at $1 and go up to as many values as you have 
+console.log('adding tasks', newTask);//console.log to ensure the the POST is working on postman.  server side is good. 
+    pool.query(queryText, [newTask.task, newTask.complete, newTask.notes])
+    .then((result) => {
+        res.sendStatus(201)
+    })
+    .catch((error) => {
+        console.log(`Error making query ${queryText}`, error);
+        res.sendStatus(500);
+    })
+   
+});//complete POST route
 
 
 //create a PUT route
