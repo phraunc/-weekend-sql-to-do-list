@@ -6,18 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="vendors/jquery.js" charset="utf-8"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="views/styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <title>weekend-sql-to-do-list</title>
 </head>
 <h1>DON'T BE LAZY, DO THESE TASKS</h1>
 <body>
-    <input>
-    <input>
-    <input>
-    <input>
+    <section id="addTask">
+    <input type="text" id="taskInput" value="" placeholder="task"> 
+    <input type="text" id="completeTaskInput" value="" placeholder="complete"> 
+    <input type="number" id="timeCompletedInput" value="" placeholder="timeCompleted"> 
+    <input type="text" id="notesInut" value="" placeholder="notes"> 
+    <button id="addButton" type="button">Add Task</button>
+    </section>
 
-
-
-
+    <h2>All Tasks</h2>
+    <table>
+        <thread>
+            <tr>
+                <th>Task</th>
+                <th>Completed</th>
+                <th>timeCompleted</th>
+                <th>Notes</th>
+            </tr>
+        </thread>
+        <tbody id="viewTasks"></tbody>
+        <!-- This is where all appended tasks are going to appear -->
+    </table>
 </body>
 </html>
