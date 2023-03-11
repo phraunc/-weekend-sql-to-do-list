@@ -9,7 +9,7 @@ app.use(express.static('server/public'));
 app.use(bodyParser.json());
 
 
-app.use('/tasklist', tasklistRouter);
+app.use('/taskList', tasklistRouter);
 // Start listening for requests on a specific port
 app.listen(PORT, () => {
     console.log('listening on port', PORT);

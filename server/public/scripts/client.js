@@ -12,7 +12,7 @@ getTask();
 //function to get the button to work and get data.
 function addTaskButton(){
 console.log('in the addTaskButton');
-
+getTask();
 
 };
 
@@ -29,15 +29,14 @@ function getTask(){
 
         for( let i=0; i < response.length; i++){
             $('#viewTasks').append(`
-            <thread>
+            
             <tr data-id=${response[i].id}>
                 <th>${response[i].task}</th>
-                <th>${response[i].completetask}</th>
-                <th>${response[i].timecompleted}</th>
+                <th>${response[i].complete}</th>
                 <th>${response[i].notes}</th>
                 <td><button class=deleteButton>Delete Task</button></th>
             </tr>
-        </thread>
+        
             
             `);
         };

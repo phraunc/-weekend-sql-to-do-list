@@ -15,20 +15,20 @@
     <input type="text" id="taskInput" value="" placeholder="task"> 
     <input type="text" id="completeTaskInput" value="" placeholder="complete"> 
     <input type="number" id="timeCompletedInput" value="" placeholder="timeCompleted"> 
-    <input type="text" id="notesInut" value="" placeholder="notes"> 
+    <input type="text" id="notesInput" value="" placeholder="notes"> 
     <button id="addButton" type="button">Add Task</button>
     </section>
 
     <h2>All Tasks</h2>
     <table>
-        <thread>
+        <thead>
             <tr>
                 <th>Task</th>
                 <th>Completed</th>
-                <th>timeCompleted</th>
                 <th>Notes</th>
+                <th>Delete Task</th>
             </tr>
-        </thread>
+        </thead>
         <tbody id="viewTasks"></tbody>
         <!-- This is where all appended tasks are going to appear -->
     </table>
