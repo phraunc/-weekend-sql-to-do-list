@@ -12,7 +12,7 @@ $('#viewTasks').on('click', '.completeButton', completeTask);
 getTask();
 };//End getReady Function
 
-//function to get the button to work and get data.
+//function to get the button to work and use the POST route
 function addTaskButton(){
 console.log('in the addTaskButton');
 let payloadObject = {
@@ -30,9 +30,7 @@ let payloadObject = {
     $('#completeTaskInput').val(''),
     $('#notesInput').val(''),
     getTask();
-  })
-
-
+  });
 };
 
 //Create a GET function to get the data from the router
@@ -84,6 +82,18 @@ console.log('in the deleteTask function');
 
 //Create PUT/complete function
 function completeTask(){
-console.log('In the completeTask function');
-
+console.log('In the completeTask function', $(this));
+// PUT request client-side
+    const taskId = $(this).parent().parent().data().id;
+    console.log('Task of TaskList is complete:', taskId);
+    $.ajax({
+      method: 'PUT',
+      url: `/TaskList/complete/${taskId}`
+    }).then((response) => {
+      console.log('Ready to be completed id:', taskId);
+      getTask();
+    }).catch(() => {
+      console.log('Error, task isnt complete:', taskId, error);
+    })
 }
+

@@ -43,7 +43,22 @@ console.log('adding tasks', newTask);//console.log to ensure the the POST is wor
 
 //create a PUT route
 
+tasklistRouter.put('/complete/:id', (req, res) => {
+    const taskId = req.params.id;//targeting the param of the database of complete column
+    console.log( 'Id of of task that is complete:', taskId );
+//line of code to target the specifics of the DB table and id of what i need to change
+    const sqlText = `UPDATE "TaskList" SET "complete" = 'true' WHERE "id" = $1;`;
 
+    pool.query(sqlText, [taskId])
+    .then((result) => {
+        console.log('Success! Ready to complete task!:', taskId);
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('Error with completing the task:', taskId);
+        res.sendStatus(500);
+    });
+    
+});
 
 
 //create a DELETE route
