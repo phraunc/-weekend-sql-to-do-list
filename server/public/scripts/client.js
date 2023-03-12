@@ -67,7 +67,7 @@ function getTask(){
 
 function deleteTask(){
 console.log('in the deleteTask function');
-    console.log(`Clicked on this ${$(this)} task`);
+    console.log(`Clicked on this ${this} task`);
     const idtask = $(this).parent().parent().data().id;
   
     $.ajax({
