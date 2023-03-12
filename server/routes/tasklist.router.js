@@ -47,6 +47,21 @@ console.log('adding tasks', newTask);//console.log to ensure the the POST is wor
 
 
 //create a DELETE route
-
+tasklistRouter.delete('/task/:id', (req, res) => {
+    console.log('Inside tasklistRouter - DELETE');
+    //targeting the params of id of task to delete
+    const idtask = req.params.id;
+    const queryText = 
+        `DELETE FROM "TaskList"
+        WHERE "id" = $1;`;
+    pool.query(queryText, [idtask])
+        .then(result => {
+            console.log('successful deletion for task id:', idtask)
+            res.sendStatus(200);
+        }).catch(err => {
+            console.log('There was an error deleting task from the server');
+            res.sendStatus(500);
+        });
+});//end Delete route
 
 module.exports = tasklistRouter;

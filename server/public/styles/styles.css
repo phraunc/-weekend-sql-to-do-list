@@ -9,5 +9,12 @@ th {
 
 .deleteButton {
     color: red;
+    border: 1px solid blue;
+    padding: 1rem
+}
 
+.completeButton{
+    color: green;
+    border: 1px solid blue;
+    padding: 1rem
 }

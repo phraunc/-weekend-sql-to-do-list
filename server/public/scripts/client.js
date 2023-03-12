@@ -5,7 +5,10 @@ console.log('in the getready function');
 
 //create 'addTask' listener
 $('#addButton').on('click', addTaskButton);
-//create a 'taskComplete' listener
+//create a 'deleteTask' listener
+$('#viewTasks').on('click', '.deleteButton', deleteTask);
+//create 'completeTask' listener
+$('#viewTasks').on('click', '.completeButton', completeTask);
 getTask();
 };//End getReady Function
 
@@ -51,6 +54,7 @@ function getTask(){
                 <th>${response[i].complete}</th>
                 <th>${response[i].notes}</th>
                 <td><button class=deleteButton>Delete Task</button></th>
+                <td><button class=completeButton>Complete Task</button></th>
             </tr>
         
             
@@ -58,3 +62,28 @@ function getTask(){
         };
     });
 };//end GET and append
+
+//create DELETE function
+
+function deleteTask(){
+console.log('in the deleteTask function');
+    console.log(`Clicked on this ${$(this)} task`);
+    const idtask = $(this).parent().parent().data().id;
+  
+    $.ajax({
+      method: 'DELETE',
+      url: `taskList/task/${idtask}`
+    })
+      .then(result => {
+        console.log('deleted task with id: ', idtask);
+        getTask();
+      }).catch(err => {
+        console.log('There was an error deleting task from server:', err);
+      });
+  };
+
+//Create PUT/complete function
+function completeTask(){
+console.log('In the completeTask function');
+
+}
