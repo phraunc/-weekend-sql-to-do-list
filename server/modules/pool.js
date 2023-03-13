@@ -1,6 +1,6 @@
 const pg = require("pg");
 const express = require('express');
-const pool = new pg.Pool;
+const Pool =  pg.Pool;//had const Pool = new pg.Pool
 
 if (process.env.DATABASE_URL) {
   pool = new pg.Pool({
