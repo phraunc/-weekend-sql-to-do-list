@@ -9,6 +9,8 @@ $('#addButton').on('click', addTaskButton);
 $('#viewTasks').on('click', '.deleteButton', deleteTask);
 //create 'completeTask' listener
 $('#viewTasks').on('click', '.completeButton', completeTask);
+
+
 getTask();
 };//End getReady Function
 
@@ -43,23 +45,21 @@ function getTask(){
     }).then(function(response) {
         console.log('GET /task response', response);
         //appending data to the DOM
-
         for( let i=0; i < response.length; i++){
             $('#viewTasks').append(`
-            
             <tr data-id=${response[i].id}>
                 <th>${response[i].task}</th>
-                <th>${response[i].complete}</th>
+                <th class="completed">${response[i].complete}</th>
                 <th>${response[i].notes}</th>
                 <td><button class=deleteButton>Delete Task</button></th>
                 <td><button class=completeButton>Complete Task</button></th>
             </tr>
-        
-            
             `);
-        };
+        }
     });
 };//end GET and append
+
+
 
 //create DELETE function
 
